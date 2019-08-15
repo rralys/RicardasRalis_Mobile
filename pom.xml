@@ -27,7 +27,16 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.xml>src/test/resources/hw12_profile.xml</suite.xml>
+                <suite.xml>src/test/resources/testNativeApp.xml</suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw12</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/testWebApp.xml</suite.xml>
             </properties>
         </profile>
     </profiles>
