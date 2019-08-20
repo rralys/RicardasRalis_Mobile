@@ -13,11 +13,13 @@ public class Hooks extends DriverSetup {
         super(type);
     }
 
+/*
     @BeforeSuite(description = "Set driver for test running")
     public void setup() throws Exception {
         prepareDriver();
         System.out.println("The test driver has been set.");
     }
+*/
 
     @BeforeGroups(description = "Set driver for native app test running", groups = "native")
     public void setupNative() throws Exception {

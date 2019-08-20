@@ -18,6 +18,7 @@
         <maven.compiler.fork>true</maven.compiler.fork>
         <encoding>UTF-8</encoding>
         <lombok.version>1.18.8</lombok.version>
+        <rest-assured.version>3.3.0</rest-assured.version>
     </properties>
 
     <profiles>
@@ -48,6 +49,13 @@
             <artifactId>java-client</artifactId>
             <version>${appium.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
