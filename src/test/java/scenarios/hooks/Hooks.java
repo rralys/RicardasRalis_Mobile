@@ -36,12 +36,4 @@ public class Hooks extends DriverSetup {
         getDriverSingle().closeApp();
         System.out.println("The driver has been destroyed.");
     }
-
-/*
-    @AfterClass(description = "Close active web driver", groups = "web")
-    public void tearDownWeb() throws Exception {
-        getDriverSingle().close();
-        System.out.println("The web driver has been destroyed.");
-    }
-*/
 }
