@@ -23,7 +23,7 @@
 
     <profiles>
         <profile>
-            <id>hw12</id>
+            <id>hw12_native</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -32,7 +32,7 @@
             </properties>
         </profile>
         <profile>
-            <id>hw12</id>
+            <id>hw12_web</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>

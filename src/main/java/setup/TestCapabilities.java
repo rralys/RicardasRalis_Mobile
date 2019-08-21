@@ -11,7 +11,7 @@ public class TestCapabilities {
     private Properties capabilities = new Properties();
     private String propertyPath;
 
-    public Properties getCapabilities(String appType) throws IOException {
+    public Properties getProperties(String appType) throws IOException {
 
         propertyPath = appType.equals("web") ?
                 ApplicationsPaths.WEB_APP.getFilePath() :
@@ -26,9 +26,9 @@ public class TestCapabilities {
         return capabilities;
     }
 
-    public String getCapability(String appType, String key) throws IOException {
+    public String readProperty(String appType, String key) throws IOException {
         if (!capabilities.containsKey(key)) {
-            capabilities = getCapabilities(appType);
+            capabilities = getProperties(appType);
         }
 
         return capabilities.getProperty(key);

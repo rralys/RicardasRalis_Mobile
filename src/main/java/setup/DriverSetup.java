@@ -36,21 +36,21 @@ public class DriverSetup extends TestCapabilities {
         appType = type;
     }
 
-    private void setCapabilities(String type) throws Exception {
+    private void readCapabilities(String type) throws Exception {
 
-        app = getCapability(type, "app");
-        site = getCapability(type, "site");
+        app = readProperty(type, "app");
+        site = readProperty(type, "site");
         site = site == null ? null : "http://" + site;
 
-        endPoint = getCapability(type, "endPoint");
-        udid = getCapability(type,"udid");
-        testPlatform = getCapability(type, "platform");
-        appPackage = getCapability(type, "appPackage");
-        appActivity = getCapability(type, "appActivity");
+        endPoint = readProperty(type, "endPoint");
+        udid = readProperty(type,"udid");
+        testPlatform = readProperty(type, "platform");
+        appPackage = readProperty(type, "appPackage");
+        appActivity = readProperty(type, "appActivity");
 
-        appDriver = getCapability(type, "driver");
-        token = getCapability(type, "token");
-        buildCheck = getCapability(type, "disableBuildCheck");
+        appDriver = readProperty(type, "driver");
+        token = readProperty(type, "token");
+        buildCheck = readProperty(type, "disableBuildCheck");
 
     }
 
@@ -71,7 +71,7 @@ public class DriverSetup extends TestCapabilities {
 
     }
 
-    private void setAppCapability() {
+    private void setAppTypeCapability() {
 
         if (site == null) {
             File file = new File(app);
@@ -85,11 +85,7 @@ public class DriverSetup extends TestCapabilities {
         capabilities = new DesiredCapabilities();
 
         setPlatformCapability();
-        setAppCapability();
-
-        System.out.println(appDriver);
-
-        System.out.println(capabilities.toString());
+        setAppTypeCapability();
 
         if (driverSingle == null) {
             driverSingle = new AppiumDriver(new URL(appDriver), capabilities);
@@ -113,7 +109,7 @@ public class DriverSetup extends TestCapabilities {
     }
 
     protected void prepareDriver(String type) throws Exception {
-        setCapabilities(type);
+        readCapabilities(type);
 
         if (type.equals("native")) {
             remoteInstallApk();
@@ -124,7 +120,7 @@ public class DriverSetup extends TestCapabilities {
 
     public void remoteInstallApk() {
 
-        File appFile = new File(app);
+        File appFile = new File(System.getProperty("user.dir") + "\\" + app);
 
         RequestSpecification requestSpecification = new RequestSpecBuilder()
                 .setBaseUri(endPoint + "/" + udid)

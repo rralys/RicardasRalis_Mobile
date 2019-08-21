@@ -1,10 +1,7 @@
 package scenarios.hooks;
 
-
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeGroups;
-import org.testng.annotations.BeforeSuite;
 import setup.DriverSetup;
 
 public class Hooks extends DriverSetup {
@@ -12,14 +9,6 @@ public class Hooks extends DriverSetup {
     protected Hooks(String type) {
         super(type);
     }
-
-/*
-    @BeforeSuite(description = "Set driver for test running")
-    public void setup() throws Exception {
-        prepareDriver();
-        System.out.println("The test driver has been set.");
-    }
-*/
 
     @BeforeGroups(description = "Set driver for native app test running", groups = "native")
     public void setupNative() throws Exception {
@@ -39,11 +28,4 @@ public class Hooks extends DriverSetup {
         System.out.println("The driver has been destroyed.");
     }
 
-/*
-    @AfterClass(description = "Close active web driver", groups = "web")
-    public void tearDownWeb() throws Exception {
-        getDriverSingle().close();
-        System.out.println("The web driver has been destroyed.");
-    }
-*/
 }
