@@ -1,6 +1,7 @@
 package scenarios.testNativeApp;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 import scenarios.hooks.Hooks;
 
@@ -21,6 +22,9 @@ public class TestContactManager extends Hooks {
         assertTrue(getDriverSingle().findElement(By.id(TARGET_ACCOUNT_FIELD.getSelector())).isDisplayed());
         assertTrue(getDriverSingle().findElement(By.id(CONTACT_NAME_FIELD.getSelector())).isDisplayed());
         assertTrue(getDriverSingle().findElement(By.id(CONTACT_PHONE_FIELD.getSelector())).isDisplayed());
+        getDriverSingle().findElement(By.id(CONTACT_NAME_FIELD.getSelector())).click();
+        getWaitSingle().until(ExpectedConditions.elementToBeClickable(
+                getDriverSingle().findElement(By.xpath(KEYBOARD_XPATH.getSelector()))));
         System.out.println("The ContactManager layout has been verified.");
     }
 }
